@@ -7,6 +7,8 @@ import { ServeStaticModule } from '@nestjs/serve-static';
 
 import { AuthModule } from './auth/auth.module';
 import { MessageWsModule } from './message-ws/message-ws.module';
+import { MongooseModule } from "@nestjs/mongoose";
+import { DiagramModelModule } from './diagram-model/diagram-model.module';
 
 @Module({
   imports: [
@@ -23,11 +25,13 @@ import { MessageWsModule } from './message-ws/message-ws.module';
       synchronize: true,
     }),
 
+    MongooseModule.forRoot(process.env.MONGO_URI),
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', 'public'),
     }),
     AuthModule,
     MessageWsModule,
+    DiagramModelModule,
   ],
 })
 export class AppModule {}

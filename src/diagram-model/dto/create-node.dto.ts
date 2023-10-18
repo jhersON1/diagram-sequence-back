@@ -1,9 +1,12 @@
 import { IsBoolean, IsNumber, IsOptional, IsString } from 'class-validator';
+import { IsStringOrNumber } from '../decorator/isStringOrNumberConstraint.decorator';
 
 export class CreateNodeDto {
-  @IsString()
+  @IsStringOrNumber({
+    message: 'key debe ser una cadena de caracteres o un número',
+  })
   @IsOptional()
-  key?: string;
+  key?: string | number;
 
   @IsString()
   @IsOptional()
@@ -18,13 +21,17 @@ export class CreateNodeDto {
   loc?: string;
 
   @IsNumber()
-  duration: number;
+  duration?: number;
 
   @IsString()
   @IsOptional()
-  group: string;
+  group?: string;
 
   @IsNumber()
   @IsOptional()
-  start: number;
+  start?: number;
+
+  @IsNumber()
+  @IsOptional()
+  __gohashid?: number;
 }

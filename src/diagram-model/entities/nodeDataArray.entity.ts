@@ -1,10 +1,10 @@
-import { Document } from 'mongoose';
+import mongoose, { Document } from 'mongoose';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 
 @Schema({ _id: false })
 export class NodeDataArray extends Document {
-  @Prop()
-  key?: string;
+  @Prop({ type: mongoose.Schema.Types.Mixed })
+  key?: string | number;
 
   @Prop()
   text?: string;
@@ -23,6 +23,9 @@ export class NodeDataArray extends Document {
 
   @Prop({ required: true })
   duration: number;
+
+  @Prop()
+  __gohashid?: number;
 }
 
 export const NodeSchema = SchemaFactory.createForClass(NodeDataArray);

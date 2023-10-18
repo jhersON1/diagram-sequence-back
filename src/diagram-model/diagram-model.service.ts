@@ -12,11 +12,13 @@ export class DiagramModelService {
     private readonly diagramModel: Model<DiagramModel>,
   ) {}
   async create(createDiagramModelDto: CreateDiagramModelDto) {
+
     createDiagramModelDto.name = createDiagramModelDto.name.toLowerCase();
     try {
       const diagramModel = await this.diagramModel.create(
         createDiagramModelDto,
       );
+
       return diagramModel;
     } catch (error) {
       console.log(error);

@@ -14,6 +14,9 @@ export class LinkDataArray extends Document {
 
   @Prop()
   time: number;
+
+  @Prop()
+  __gohashid: number;
 }
 
 export const LinkSchema = SchemaFactory.createForClass(LinkDataArray);

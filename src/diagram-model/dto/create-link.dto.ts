@@ -16,4 +16,8 @@ export class CreateLinkDto {
   @IsNumber()
   @IsOptional()
   time: number;
+
+  @IsNumber()
+  @IsOptional()
+  __gohashid?: number;
 }
